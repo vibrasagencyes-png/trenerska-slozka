@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trenérská složka – 120 hotových fotbalových tréninků pro děti</title>
+<meta name="description" content="120 hotových tréninků pro předpřípravku, mladší a starší přípravku a mladší žáky. Metoda 1-3-1: jeden cíl, tři cvičení, jedna hra.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap&subset=latin-ext" rel="stylesheet">
+<style>
+  :root{
+    --grass:#1F7A3A; --grass-dark:#155C2B; --chalk:#FFFFFF; --board:#111311;
+    --bib:#F2C230; --ink:#1B1D1B; --muted:#5B625C; --line:#E3E8E3; --soft:#F4F7F3;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:Inter,system-ui,sans-serif;color:var(--ink);background:var(--chalk);line-height:1.6;font-size:17px}
+  h1,h2,h3{font-family:"Barlow Condensed",sans-serif;line-height:1.05;letter-spacing:.2px}
+  h1{font-size:clamp(2.6rem,9vw,4.2rem);font-weight:800;text-transform:uppercase}
+  h2{font-size:clamp(2rem,6.5vw,2.9rem);font-weight:800;text-transform:uppercase;margin-bottom:.6em}
+  h3{font-size:1.5rem;font-weight:700}
+  p{margin-bottom:1em}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+  section{padding:64px 0}
+  .kicker{display:inline-block;font-weight:700;font-size:.8rem;letter-spacing:1.5px;text-transform:uppercase;background:var(--bib);color:var(--board);padding:6px 12px;border-radius:4px;margin-bottom:18px}
+
+  /* Hero */
+  .hero{background:var(--grass);color:var(--chalk);position:relative;overflow:hidden;padding:56px 0 64px}
+  .hero::before{content:"";position:absolute;inset:0;background:
+    repeating-linear-gradient(90deg,rgba(255,255,255,.05) 0 80px,transparent 80px 160px);pointer-events:none}
+  .hero::after{content:"";position:absolute;width:420px;height:420px;border:3px solid rgba(255,255,255,.18);border-radius:50%;right:-160px;top:-120px}
+  .hero .wrap{position:relative;display:grid;gap:36px}
+  .hero p.lead{font-size:1.15rem;opacity:.95;max-width:560px}
+  .hero strong{color:var(--bib)}
+  .mock{background:rgba(0,0,0,.18);border:2px dashed rgba(255,255,255,.35);border-radius:14px;min-height:280px;display:flex;align-items:center;justify-content:center;text-align:center;padding:20px;font-size:.9rem;opacity:.85}
+  .btn{display:inline-block;background:var(--bib);color:var(--board);font-family:"Barlow Condensed",sans-serif;font-weight:800;font-size:1.45rem;text-transform:uppercase;text-decoration:none;padding:16px 28px;border-radius:8px;box-shadow:0 5px 0 #B98F12;transition:transform .1s}
+  .btn:active{transform:translateY(3px);box-shadow:0 2px 0 #B98F12}
+  .trust{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:16px;font-size:.88rem;opacity:.95}
+  .trust span::before{content:"✓ ";color:var(--bib);font-weight:700}
+
+  /* Problem */
+  .clock{font-family:"Barlow Condensed",sans-serif;font-size:clamp(2.4rem,8vw,3.6rem);font-weight:800;color:var(--grass)}
+  .pain{list-style:none;margin:20px 0 28px;display:grid;gap:12px}
+  .pain li{background:var(--soft);border-left:5px solid var(--grass);padding:14px 16px;border-radius:0 8px 8px 0}
+  .punch{font-family:"Barlow Condensed",sans-serif;font-size:1.9rem;font-weight:800;text-transform:uppercase;line-height:1.1}
+  .punch em{font-style:normal;background:var(--bib);padding:0 6px}
+
+  /* Method */
+  .method{background:var(--board);color:var(--chalk)}
+  .method .sub{opacity:.85;max-width:620px}
+  .steps{display:grid;gap:16px;margin-top:32px}
+  .step{border:2px solid rgba(255,255,255,.2);border-radius:14px;padding:24px;position:relative}
+  .step .num{font-family:"Barlow Condensed",sans-serif;font-size:3.8rem;font-weight:800;color:var(--bib);line-height:1}
+  .step h3{margin:6px 0 8px;text-transform:uppercase}
+  .step p{opacity:.88;margin:0}
+
+  /* Inside */
+  .cats{display:grid;gap:14px;margin:28px 0}
+  .cat{border:2px solid var(--line);border-radius:12px;padding:18px 20px;display:flex;justify-content:space-between;align-items:center;gap:12px}
+  .cat b{font-family:"Barlow Condensed",sans-serif;font-size:1.7rem;text-transform:uppercase}
+  .cat small{display:block;color:var(--muted);font-size:.9rem}
+  .cat .n{background:var(--grass);color:#fff;font-weight:700;border-radius:999px;padding:6px 14px;white-space:nowrap;font-size:.9rem}
+  .feat{list-style:none;display:grid;gap:10px;margin:8px 0 28px}
+  .feat li::before{content:"■ ";color:var(--grass)}
+  .previews{display:grid;gap:14px}
+  .slot{background:var(--soft);border:2px dashed #C9D3C8;border-radius:12px;min-height:200px;display:flex;align-items:center;justify-content:center;text-align:center;color:var(--muted);font-size:.88rem;padding:16px}
+
+  .heroimg{width:100%;height:auto;display:block;filter:drop-shadow(0 18px 30px rgba(0,0,0,.25))}
+  .prev{width:100%;height:auto;border-radius:12px;display:block;border:1px solid var(--line)}
+  /* Bonuses */
+  .bonuses{background:var(--soft)}
+  .bgrid{display:grid;gap:16px;margin-top:24px}
+  .bonus{background:#fff;border-radius:12px;padding:22px;border-top:6px solid var(--bib);box-shadow:0 2px 10px rgba(0,0,0,.05)}
+  .bonus .tag{font-size:.75rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--grass)}
+  .bonus h3{margin:4px 0 8px}
+  .bonus p{color:var(--muted);margin-bottom:10px}
+  .bonus .val{font-weight:700;font-size:.9rem}
+
+  /* Stack */
+  .stack{max-width:620px;margin:0 auto;border:3px solid var(--board);border-radius:16px;overflow:hidden}
+  .stack .head{background:var(--board);color:#fff;padding:18px 22px}
+  .stack .head h2{margin:0;font-size:2rem}
+  .row{display:flex;justify-content:space-between;gap:12px;padding:12px 22px;border-bottom:1px solid var(--line);font-size:.95rem}
+  .row span:last-child{white-space:nowrap;color:var(--muted)}
+  .row.total{font-weight:700;background:var(--soft)}
+  .price{text-align:center;padding:26px 22px 30px}
+  .price .big{font-family:"Barlow Condensed",sans-serif;font-size:4.2rem;font-weight:800;color:var(--grass);line-height:1}
+  .price p{color:var(--muted);font-size:.9rem;margin:6px 0 18px}
+  .price .pln{font-weight:600;color:var(--muted);margin-top:4px}
+  #cookie{position:fixed;left:12px;right:12px;bottom:12px;z-index:50;max-width:620px;margin:0 auto;background:var(--board);color:#fff;border-radius:14px;padding:16px 18px;box-shadow:0 10px 30px rgba(0,0,0,.35);font-size:.88rem;display:none}
+  #cookie p{margin:0 0 12px}#cookie a{color:var(--bib)}
+  #cookie button{font:inherit;font-weight:700;border:0;border-radius:8px;padding:10px 16px;cursor:pointer;margin-right:8px}
+  #cookie .ok{background:var(--bib);color:var(--board)}#cookie .no{background:#2b2e2b;color:#fff}
+
+  /* Fit */
+  .fit{display:grid;gap:16px}
+  .box{border-radius:12px;padding:22px}
+  .yes{background:#EAF5EC}
+  .no{background:#F7F1F0}
+  .box ul{list-style:none;display:grid;gap:8px;margin-top:10px}
+  .yes li::before{content:"✔ ";color:var(--grass);font-weight:700}
+  .no li::before{content:"✕ ";color:#A2443A;font-weight:700}
+
+  /* FAQ */
+  details{border-bottom:1px solid var(--line);padding:16px 0}
+  summary{font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:12px}
+  summary::after{content:"+";font-weight:700;color:var(--grass);font-size:1.3rem;line-height:1}
+  details[open] summary::after{content:"–"}
+  details p{margin:10px 0 0;color:var(--muted)}
+
+  /* Guarantee */
+  .guar{display:grid;gap:18px;align-items:center;background:var(--soft);border-radius:16px;padding:28px}
+  .seal{width:120px;height:120px;border-radius:50%;background:var(--grass);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:"Barlow Condensed",sans-serif;font-weight:800;text-transform:uppercase;margin:0 auto;border:5px solid var(--bib)}
+  .seal b{font-size:2.6rem;line-height:1}
+
+  .final{background:var(--grass);color:#fff;text-align:center}
+  .final p{opacity:.92;max-width:560px;margin:0 auto 24px}
+  footer{background:var(--board);color:#9AA39B;font-size:.82rem;padding:28px 0;text-align:center}
+  footer a{color:#C9D0CA}
+
+  @media(min-width:820px){
+    .hero .wrap{grid-template-columns:1.15fr .85fr;align-items:center}
+    .steps{grid-template-columns:repeat(3,1fr)}
+    .cats{grid-template-columns:1fr 1fr}
+    .previews{grid-template-columns:repeat(3,1fr)}
+    .bgrid{grid-template-columns:1fr 1fr}
+    .fit{grid-template-columns:1fr 1fr}
+    .guar{grid-template-columns:140px 1fr}
+  }
+</style><style>
+.tiers{display:grid;gap:18px;margin-top:10px}
+.tier{border:3px solid var(--line);border-radius:16px;overflow:hidden;background:#fff;display:flex;flex-direction:column}
+.tier.best{border-color:var(--board)}
+.tier .head{background:var(--soft);padding:16px 22px}.tier.best .head{background:var(--board);color:#fff}
+.tier .head h3{font-size:1.9rem;text-transform:uppercase;margin:0}
+.tier .flag{display:inline-block;background:var(--bib);color:var(--board);font-weight:700;font-size:.75rem;letter-spacing:1px;text-transform:uppercase;padding:4px 10px;border-radius:4px;margin-bottom:6px}
+.tier ul{list-style:none;padding:16px 22px 0;display:grid;gap:8px;flex:1}
+.tier li{display:flex;justify-content:space-between;gap:10px;font-size:.95rem;border-bottom:1px solid var(--line);padding-bottom:8px}
+.tier li span:last-child{white-space:nowrap;color:var(--muted)}
+.tier li.off{color:#A9B0AA;text-decoration:line-through}
+.tier .price{padding:20px 22px 26px}
+.tier .eur{font-weight:600;color:var(--muted);margin-top:4px}
+.cat>div{min-width:0}.cat b{font-size:1.4rem;overflow-wrap:anywhere}
+@media(min-width:820px){.tiers{grid-template-columns:1fr 1fr}.cat b{font-size:1.6rem}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <span class="kicker">Pro trenéry dětí · U6–U13</span>
+      <h1>Dnešní trénink hotový za&nbsp;5&nbsp;minut</h1>
+      <p class="lead"><b>Trenérská složka</b> je 120 hotových tréninků seřazených podle věkových kategorií. Každý je postavený na <strong>Metodě 1-3-1</strong>: jeden cíl, tři cvičení, jedna hra.</p>
+      <a class="btn" href="#cena">Chci Trenérskou složku</a>
+      <div class="trust"><span>PDF k tisku + verze do mobilu</span><span>Přístup hned po nákupu</span><span>14denní záruka</span></div>
+    </div>
+    <picture><source srcset="hero-mockup.webp" type="image/webp"><img class="heroimg" src="hero-mockup.png" alt="Trenérská složka: 120 hotových tréninků, plán sezóny, bonusy a verze do mobilu" width="1200" height="1100" fetchpriority="high"></picture>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="clock">17:30. Trénink v 18:00.</div>
+    <p>A ty ještě nevíš, co dnes budete dělat. Znáš to?</p>
+    <ul class="pain">
+      <li>Zase ta samá čtyři cvičení, protože na nic jiného nebyl čas.</li>
+      <li>Děti se nudí a rodiče se ptají, kdy bude vidět pokrok.</li>
+      <li>Cvičení z YouTube a Instagramu jsou jednotlivá, v angličtině nebo pro profesionální akademie.</li>
+    </ul>
+    <p class="punch">Cvičení je dost. <em>Chybí plán</em>, který je spojí.</p>
+  </div>
+</section>
+
+<section class="method">
+  <div class="wrap">
+    <span class="kicker">Metoda 1-3-1</span>
+    <h2>Každý trénink je postavený stejně jednoduše</h2>
+    <p class="sub">Nedostaneš pytel cvičení, ve kterém se musíš přehrabovat. Dostaneš hotový trénink, ve kterém každá část vede k jednomu cíli.</p>
+    <div class="steps">
+      <div class="step"><div class="num">1</div><h3>Cíl</h3><p>Jeden cíl na trénink: vedení míče, přihrávka, zpracování, hra 1 na 1. Děti vědí, co se dnes učí.</p></div>
+      <div class="step"><div class="num">3</div><h3>Cvičení</h3><p>Tři cvičení od nejjednoduššího po zápasovou situaci. Každé má snazší a těžší variantu.</p></div>
+      <div class="step"><div class="num">1</div><h3>Hra</h3><p>Na konci hra s pravidly, která odměňují cíl dne. Děti hrají a zároveň trénují to, co je potřeba.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Co je ve složce</h2>
+    <p>Otevřeš svou kategorii a vybereš dnešní trénink. Každá kategorie má i plán sezóny: v jakém pořadí brát cíle během celého roku.</p>
+    <div class="cats">
+      <div class="cat"><div><b>Předpřípravka</b><small>U6–U7</small></div><span class="n">30 tréninků</span></div>
+      <div class="cat"><div><b>Mladší přípravka</b><small>U8–U9</small></div><span class="n">30 tréninků</span></div>
+      <div class="cat"><div><b>Starší přípravka</b><small>U10–U11</small></div><span class="n">30 tréninků</span></div>
+      <div class="cat"><div><b>Mladší žáci</b><small>U12–U13</small></div><span class="n">30 tréninků</span></div>
+    </div>
+    <ul class="feat">
+      <li>Každý trénink na jedné stránce: nákres hřiště, potřebné pomůcky, délka a varianty.</li>
+      <li>Plán sezóny pro každou kategorii.</li>
+      <li>PDF ve formátu A4 k tisku a verze pohodlná do mobilu, přímo na hřiště.</li>
+    </ul>
+    <div class="previews">
+      <img class="prev" src="img-trenink.jpg" alt="Stránka tréninku podle Metody 1-3-1" loading="lazy">
+      <img class="prev" src="img-plan.jpg" alt="Plán sezóny pro starší přípravku" loading="lazy">
+      <img class="prev" src="img-mobil.jpg" alt="Verze do mobilu" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<section class="bonuses">
+  <div class="wrap">
+    <h2>V kompletním balíčku navíc</h2>
+    <div class="bgrid">
+      <div class="bonus"><div class="tag">Bonus 1</div><h3>Plánovač sezóny k tisku</h3><p>Kalendář na celý rok, týdenní karta a docházka. Naplánuješ jednou a pak už jen odškrtáváš.</p></div>
+      <div class="bonus"><div class="tag">Bonus 2</div><h3>Hry do těžkých podmínek</h3><p>40 her na dny, kdy něco nehraje: málo dětí, malé hřiště, déšť, smíšené ročníky.</p></div>
+      <div class="bonus"><div class="tag">Bonus 3</div><h3>Hotové zprávy pro rodiče</h3><p>Texty na začátek sezóny, k docházce, zápasům a chování. Zkopíruješ, pošleš a máš klid.</p></div>
+      <div class="bonus"><div class="tag">Bonus 4</div><h3>Karta pokroku hráče</h3><p>Jednoduchý pozorovací list pro každé dítě. Hodí se na schůzky s rodiči i v klubu.</p></div>
+      <div class="bonus"><div class="tag">Doplněk</div><h3>Trénink brankářů U6–U13</h3><p>20 tréninků pro brankáře podle věku + 10 způsobů, jak brankáře zapojit do týmového tréninku.</p></div>
+      <div class="bonus"><div class="tag">Doplněk</div><h3>Prvních 10 minut</h3><p>40 her na rozcvičku s míčem, 10 pro každou kategorii, s nákresem a variantami.</p></div>
+      <div class="bonus"><div class="tag">Doplněk</div><h3>Motorika a koordinace</h3><p>60 krátkých cvičení v 6 blocích + 8 hotových sestav na 10–15 minut.</p></div>
+      <div class="bonus"><div class="tag">Doplněk</div><h3>Zápasový den</h3><p>Checklist, rozcvička před zápasem, porady, karta střídání (férové minuty) a stránka pro rodiče.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="cena">
+  <div class="wrap">
+    <h2 style="text-align:center">Vyber si balíček</h2>
+    <div class="tiers">
+      <div class="tier">
+        <div class="head"><h3>Základ</h3></div>
+        <ul>
+          <li><span>120 tréninků + plány sezóny</span><span>✓</span></li>
+          <li><span>PDF k tisku + 4 verze do mobilu</span><span>✓</span></li>
+          <li class="off"><span>4 bonusy</span><span></span></li>
+          <li class="off"><span>4 doplňky</span><span></span></li>
+        </ul>
+        <div class="price"><div class="big">399 Kč</div><div class="eur">platba 16,40 €</div>
+          <p>Jednorázová platba přes Hotmart · přístup hned na e-mail · 14denní záruka</p>
+          <a class="btn" href="#cena" data-checkout="zaklad">Kupuji Základ</a></div>
+      </div>
+      <div class="tier best">
+        <div class="head"><span class="flag">Nejvýhodnější</span><h3>Kompletní</h3></div>
+        <ul>
+          <li><span>120 tréninků + plány sezóny</span><span>✓</span></li>
+          <li><span>PDF k tisku + 4 verze do mobilu</span><span>✓</span></li>
+          <li><span>4 bonusy (plánovač, hry do těžkých podmínek, zprávy pro rodiče, karta pokroku)</span><span>✓</span></li>
+          <li><span>4 doplňky (brankáři, prvních 10 minut, motorika, zápasový den)</span><span>✓</span></li>
+        </ul>
+        <div class="price"><div class="big">699 Kč</div><div class="eur">platba 28,70 €</div>
+          <p>Jednorázová platba přes Hotmart · přístup hned na e-mail · 14denní záruka</p>
+          <a class="btn" href="#cena" data-checkout="kompletni">Kupuji Kompletní</a></div>
+      </div>
+    </div>
+    <p style="text-align:center;color:var(--muted);font-size:.88rem;margin-top:14px">Platba probíhá v eurech, částky v Kč jsou orientační. Konečnou částku ukáže platební formulář.</p>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap fit">
+    <div class="box yes"><h3>Pro koho to je</h3><ul>
+      <li>Trenéři a asistenti v klubech a fotbalových školách (U6–U13).</li>
+      <li>Rodiče, kteří vedou tým svého dítěte.</li>
+      <li>Učitelé tělocviku, kteří vedou fotbalové kroužky.</li></ul></div>
+    <div class="box no"><h3>Pro koho ne</h3><ul>
+      <li>Trenéři dospělých týmů a akademie s vlastním programem.</li>
+      <li>Kdo hledá videokurz. Tohle je materiál k tisku a do mobilu.</li></ul></div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <h2>Otázky</h2>
+    <details><summary>Na internetu jsou přece cvičení zdarma?</summary><p>Jsou, a tisíce. Jenže jsou to jednotlivá cvičení. Složka ti dává hotový trénink s jedním cílem a plán na celou sezónu, takže nic neskládáš sám.</p></details>
+    <details><summary>Jak dostanu materiály?</summary><p>Hned po zaplacení ti Hotmart pošle e-mail s přístupem k PDF souborům (zpráva je v angličtině – když ji nevidíš, podívej se do spamu nebo do složky Promoakce). Platba je v eurech, takže banka může zvlášť ukázat částku a poplatek za převod měny – je to jedna platba.</p></details>
+    <details><summary>Jaký je rozdíl mezi Základem a Kompletním balíčkem?</summary><p>Základ obsahuje všech 120 tréninků s plány sezóny ve verzi k tisku i do mobilu. Kompletní k tomu přidává 4 bonusy a 4 doplňky: tréninky brankářů, rozcvičky, motoriku a zápasový den.</p></details>
+    <details><summary>Je to oficiální program FAČR?</summary><p>Ne. Je to nezávislý materiál, seřazený podle věkových kategorií českého mládežnického fotbalu.</p></details>
+    <details><summary>Mám málo dětí nebo malé hřiště. Bude to fungovat?</summary><p>Ano. Každé cvičení má varianty a bonus „Hry do těžkých podmínek“ je přesně na takové dny.</p></details>
+    <details><summary>Můžu si tréninky vytisknout?</summary><p>Ano, všechno je ve formátu A4 připraveném k tisku. Můžeš používat i verzi do mobilu.</p></details>
+    <details><summary>A když mi materiál nebude vyhovovat?</summary><p>Máš 14 dní na vrácení peněz. Stačí napsat na teczkatrenera@gmail.com nebo požádat o vrácení v Hotmartu – vrátíme celou částku bez otázek.</p></details>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="guar">
+      <div class="seal"><b>14</b>dní</div>
+      <div><h3>Záruka bez rizika</h3>
+      <p style="margin:6px 0 0">Stáhni si složku a odveď s ní pár tréninků. Pokud zjistíš, že to není pro tebe, do 14 dnů ti vrátíme peníze. Bez otázek.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <h2>Další trénink máš hotový</h2>
+    <p>120 tréninků a plány sezóny od 399 Kč. Jednorázově.</p>
+    <a class="btn" href="#cena">Vybrat balíček</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>Trenérská složka · Prodávající: Leonardo Andres Pombo · Kontakt: <a href="mailto:teczkatrenera@gmail.com">teczkatrenera@gmail.com</a></p>
+    <p>Platby zajišťuje Hotmart.</p>
+    <p><a href="obchodni-podminky.html">Obchodní podmínky</a> · <a href="ochrana-osobnich-udaju.html">Ochrana osobních údajů</a> · <a href="#" onclick="cookieOpen();return false">Nastavení cookies</a></p>
+    <p>Nezávislý materiál, bez vazby na FAČR ani žádný klub.</p>
+  </div>
+</footer>
+
+<div id="cookie" role="dialog" aria-label="Soubory cookie">
+  <p>Používáme soubory cookie a pixel Meta, abychom měřili účinnost našich reklam. Můžeš souhlasit nebo odmítnout – stránka funguje stejně. Podrobnosti v <a href="ochrana-osobnich-udaju.html">zásadách ochrany osobních údajů</a>.</p>
+  <button class="ok" onclick="cookieSet('yes')">Souhlasím</button><button class="no" onclick="cookieSet('no')">Odmítám</button>
+</div>
+<script>
+/* ===== Config: links de checkout de Hotmart (completar cuando existan los productos CZ) ===== */
+var CHECKOUT = { zaklad: '', kompletni: '' };
+var PRICE = { zaklad: 16.40, kompletni: 28.70 };
+var PIXEL_ID = '1458713346117734';
+function loadPixel(){
+  if(!PIXEL_ID||window.fbq)return;
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init',PIXEL_ID);fbq('track','PageView');fbq('track','ViewContent',{content_name:'Trenerska slozka CZ',value:16.40,currency:'EUR'});
+}
+function getConsent(){try{return localStorage.getItem('cookie_consent')}catch(e){return null}}
+function cookieSet(v){try{localStorage.setItem('cookie_consent',v)}catch(e){}document.getElementById('cookie').style.display='none';if(v==='yes')loadPixel();}
+function cookieOpen(){document.getElementById('cookie').style.display='block'}
+(function(){var c=getConsent();if(c==='yes')loadPixel();else if(!c)cookieOpen();})();
+(function(){var q=new URLSearchParams(location.search);if(q.get('utm_content')&&!q.get('sck'))q.set('sck',q.get('utm_content'));var s=q.toString();
+document.querySelectorAll('a[data-checkout]').forEach(function(a){var k=a.getAttribute('data-checkout');var u=CHECKOUT[k];
+ if(u){a.href=u+(s?(u.indexOf('?')<0?'?':'&')+s:'');}
+ a.addEventListener('click',function(){if(window.fbq)fbq('track','InitiateCheckout',{content_name:'Trenerska slozka CZ '+k,value:PRICE[k],currency:'EUR'});});});})();
+</script>
+</body>
+</html>
